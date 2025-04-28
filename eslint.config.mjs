@@ -2,6 +2,7 @@ import js from '@eslint/js';
 import globals from 'globals';
 import prettierPlugin from 'eslint-plugin-prettier';
 import prettierConfig from 'eslint-config-prettier';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import { defineConfig } from 'eslint/config';
 
 export default defineConfig([
@@ -13,10 +14,10 @@ export default defineConfig([
       ecmaVersion: 'latest',
       sourceType: 'module',
     },
-    extends: ['js/recommended'],
+    extends: ['js/recommended', eslintPluginPrettierRecommended],
     rules: {
       ...prettierConfig.rules,
-      'prettier/prettier': 'error',
+      'prettier/prettier': ['error', { singleQuote: true }],
       'no-unused-vars': 'warn',
       'no-console': 'warn',
     },
